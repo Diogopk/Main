@@ -35,13 +35,13 @@ def process_file(filename):
     pgs_atuais = pd.read_excel(xls, "pgs atuais")
 
     # Verificar se as colunas esperadas existem
-    required_columns = ["Nome do entregador", "Total NF", "Valor Ifood", "Tipo de Chave Pix", "Chave Pix", "CNPJ"]
+    required_columns = ["Nome do entregador", "Valor NF", "Valor Ifood", "Tipo de Chave Pix", "Chave Pix", "CNPJ"]
     missing_columns = [col for col in required_columns if col not in pgs_atuais.columns]
     if missing_columns:
         raise KeyError(f"As seguintes colunas estão faltando na aba 'pgs atuais': {', '.join(missing_columns)}")
 
     # Selecionar colunas necessárias para o resumo
-    resumo = pgs_atuais[["Nome do entregador", "Total NF", "Valor Ifood", "Tipo de Chave Pix", "Chave Pix", "CNPJ"]]
+    resumo = pgs_atuais[["Nome do entregador", "Valor NF", "Valor Ifood", "Tipo de Chave Pix", "Chave Pix", "CNPJ"]]
 
     # Salvar em um novo arquivo Excel
     resumo_filename = "resumo.xlsx"
